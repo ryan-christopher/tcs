@@ -1,0 +1,35 @@
+html{
+    margin:0;
+    padding:0;
+    background-color:#141414;
+    color:white;
+    font-family: 'Spartan', sans-serif;
+}
+body{
+    margin:0;
+    padding:0;
+}
+h1{
+    letter-spacing: 2px;
+    font-size:50px;
+    text-align: center;
+}
+
+h2{
+    letter-spacing: 2px;
+    font-size:15px;
+    stroke: transparent;
+    stroke-width: 3px;
+    text-align: center;
+}
+
+
+#center{
+    display:grid;
+    place-items: center;
+}
+img{
+    width:20%;
+    max-width:150px;
+    min-width:100px;
+}
