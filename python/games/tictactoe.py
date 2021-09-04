@@ -10,83 +10,126 @@
 
 # import statements for helping with CPU opponent
 # and animations
-from random import *
 
-# array of positions on the board
-board = [" ", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-# array of possible game over scenarios
-winCases = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+from random import randint
+from time import sleep
+import sys, os
+from termcolor import colored
 
-filledSpots = 0
+def animate(text, time):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        sleep(time)
 
-# function to generate the tic tac toe grid using string concatenation
-# with the positions of the board array
-def generateBoard(board):
-    print(" " + board[7] + " | " + board[8] + " | " + board[9])
-    print("-----------")
-    print(" " + board[4] + " | " + board[5] + " | " + board[6])
-    print("-----------")
-    print(" " + board[1] + " | " + board[2] + " | " + board[3])
+animate("Tic Tac Toe\n", 0.1)
 
-# helper function to iterate through the winCases array and determine if any three
-# spots on the board are the same
-def checkResults(board):
-    global filledSpots
-    filledSpots += 1
+X = colored("X", "red")
+O = colored("O", "cyan")
 
-    for i in range(8):
-        if (board[winCases[i][0]] == board[winCases[i][1]] == board[winCases[i][2]]):
-            if board[winCases[i][0]] == "X":
-                print("You win!")
+board = ["", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-            else:
-                print("You lose!")
-            return True
+fullspots = 0
 
-    if filledSpots == 10:
-        print("DRAW!")
+def generategrid(list):
+  animate(list[1] + " | " + list[2] + " | " + list[3] + "\n", 0.025)
+  animate("---------\n", 0.025)
+  animate(list[4] + " | " + list[5] + " | " + list[6] + "\n", 0.025)
+  animate("---------\n", 0.025)
+  animate(list[7] + " | " + list[8] + " | " + list[9] + "\n\n\n", 0.025)
+
+
+def checkspots(grid):
+    if grid[1] == grid[4] == grid[7]:
+        if grid[1] == X:
+            animate(colored("You win!", "green"), 0.1)
+        else:
+            animate(colored("Computer wins!", "red"), 0.3)
+        return True
+    if grid[2] == grid[5] == grid[8]:
+        if grid[2] == X:
+            animate(colored("You win!", "green"), 0.1)
+        else:
+            animate(colored("Computer wins!", "red"), 0.3)
+        return True
+    if grid[3] == grid[6] == grid[9]:
+        if grid[3] == X:
+            animate(colored("You win!", "green"), 0.1)
+        else:
+            animate(colored("Computer wins!", "red"), 0.3)
+        return True
+    if grid[1] == grid[2] == grid[3]:
+        if grid[1] == X:
+            animate(colored("You win!", "green"), 0.1)
+        else:
+            animate(colored("Computer wins!", "red"), 0.3)
+        return True
+    if grid[4] == grid[5] == grid[6]:
+        if grid[4] == X:
+            animate(colored("You win!", "green"), 0.1)
+        else:
+            animate(colored("Computer wins!", "red"), 0.3)
+        return True
+    if grid[7] == grid[8] == grid[9]:
+        if grid[7] == X:
+            animate(colored("You win!", "green"), 0.1)
+        else:
+            animate(colored("Computer wins!", "red"), 0.3)
+        return True
+    if grid[1] == grid[5] == grid[9]:
+        if grid[1] == X:
+            animate(colored("You win!", "green"), 0.1)
+        else:
+            animate(colored("Computer wins!", "red"), 0.3)
+        return True
+    if grid[3] == grid[5] == grid[7]:
+        if grid[3] == X:
+            animate(colored("You win!", "green"), 0.1)
+        else:
+            animate(colored("Computer wins!", "red"), 0.3)
         return True
 
     return False
 
-# main game loop, will run until a break statement is reached
+
+generategrid(board)
+
 while True:
+    animate("Which space do you choose?: ", 0.05)
+    player = input("-> ")
 
-    # create the board
-    generateBoard(board)
+    os.system("clear")
 
-    # call the checkresults function and iterate through the winCases arrays
-    # if there is a game winning scenario, end the loop
-    if (checkResults(board) == True):
-        break    
-
-    # force the user to choose a valid position
-    while True:
-        playerChoice = int(input("What's your choice?: "))
-
-        if board[playerChoice] != "X" and board[playerChoice] != "O":
-            # reassign the board array at the position the player chose to an X
-            board[playerChoice] = "X"  
-            break
-
+    while player.isnumeric() != True or int(player) > 9 or int(player) < 1 or board[int(player)] == X or board[int(player)] == O:
+        if player.isnumeric() != True:
+            player = input("Choose a number...")
+        elif int(player) > 9 or int(player) < 1:
+            player = input("That's not a valid number...")
         else:
-            print("That spot is taken.")
+            player = input("That's taken!")
+        
+    player = int(player)
 
-    print("You chose " + str(playerChoice))
-    generateBoard(board)
 
-    # call the checkresults function and iterate through the winCases arrays
-    # if there is a game winning scenario, end the loop
-    if (checkResults(board) == True):
+    board[player] = X
+    fullspots += 1
+    generategrid(board)
+
+    if checkspots(board) == True:
         break
 
-    while True: 
-        cpuChoice = randint(1,9)
+    if fullspots == 9:
+        print("Draw!!!")
+        break
 
-        if (board[cpuChoice] != "X") and (board[cpuChoice] != "O"):
-            # reassign the board array at the position the computer chose to an O
-            board[cpuChoice] = "O"
-            break
+    cpu = randint(1, 9)
 
-    print("Computer's choice was " + str(cpuChoice))
+    while board[cpu] == X or board[cpu] == O:
+        cpu = randint(1, 9)
+
+    board[cpu] = O
+    fullspots += 1
+    sleep(1)
+    generategrid(board)
+

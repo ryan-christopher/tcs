@@ -14,13 +14,13 @@ h1{
 .section1{
     min-height: 100vh;
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, .5) 20%, rgba(0, 0, 0, 0)),url(images/bg1.jpg);
+    background: linear-gradient(rgba(0, 0, 0, .5) 20%, rgba(0, 0, 0, 0)),url(images/spiderversebg.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-.section1 h1{
+.section1, .section2, .section3 h1{
     font-family: 'Major Mono Display', monospace;
     font-size:70px;
 }
@@ -37,7 +37,7 @@ h1{
 .section2{
     min-height: 100vh;
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, .5) 20%, rgba(0, 0, 0, 0)),url(images/bg2.jpg);
+    background: linear-gradient(rgba(0, 0, 0, .5) 20%, rgba(0, 0, 0, 0)),url(images/narutobg.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -67,7 +67,7 @@ p.description>a:hover{
 .section3{
     min-height: 100vh;
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, .5) 20%, rgba(0, 0, 0, 0)),url(images/bg3.png);
+    background: linear-gradient(rgba(0, 0, 0, .5) 20%, rgba(0, 0, 0, 0)),url(images/portal.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -113,22 +113,4 @@ img.tablepic:hover{
     border-radius:4px;
     transform:scale(1.25);
     transition: all 0.5s;
-}
-
-
-div.fadeout{
-    height: 20vh;
-    margin-top: -20vh;
-    background-image: linear-gradient(transparent 5%, rgba(0, 0, 0, 0.5), black);
-    opacity:0;
-    animation: fadein 2s 2s 1 forwards;
-}
-
-@keyframes fadein {
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
 }

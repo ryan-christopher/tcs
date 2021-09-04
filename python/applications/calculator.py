@@ -1,4 +1,5 @@
-# calculator idea for madyson
+# calculator 
+# by Ryan
 
 from time import sleep
 from termcolor import colored

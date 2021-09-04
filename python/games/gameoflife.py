@@ -4,18 +4,19 @@
 # Each cell with three neighbors becomes populated.
 
 # Conways Game of Life:
+# by Ryan
 
 from time import sleep
 
 board = [
 
-    ["-", "O", "-", "-", "-", "-", "O", "-"],
-    ["-", "O", "-", "-", "-", "-", "O", "-"],
-    ["-", "O", "-", "-", "-", "-", "O", "-"],
     ["-", "-", "-", "-", "-", "-", "-", "-"],
-    ["-", "O", "-", "-", "-", "-", "O", "-"],
-    ["-", "O", "-", "-", "-", "-", "O", "-"],
-    ["-", "O", "-", "-", "-", "-", "O", "-"],
+    ["-", "O", "-", "-", "-", "-", "-", "-"],
+    ["-", "-", "O", "O", "-", "-", "-", "-"],
+    ["-", "O", "O", "-", "-", "-", "-", "-"],
+    ["-", "-", "-", "-", "-", "-", "-", "-"],
+    ["-", "-", "-", "-", "-", "-", "-", "-"],
+    ["-", "-", "-", "-", "-", "-", "-", "-"],
     ["-", "-", "-", "-", "-", "-", "-", "-"]
 
 ]
@@ -164,10 +165,17 @@ print("Conway's Game of Life: ")
 while True:
     sleep(0.5)
     answer = input("Would you like to continue? y/n: ")
-    while answer not in ["y", "n"]:
+    while answer not in ["y", "n", "5"]:
         answer = input("Choose y or n: ")
     if answer == 'n':
         break
+    
+    elif answer == "5":
+        for i in range(5):
+            board = newGeneration(board)
+            printBoard(board)
+            print("")
+            sleep(0.5)
     else:
         board = newGeneration(board)
         printBoard(board)

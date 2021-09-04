@@ -1,3 +1,5 @@
+
+
 var heading;
 heading = document.getElementById('colorValue');
 var buttons;

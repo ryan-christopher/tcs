@@ -1,0 +1,9 @@
+body{
+    background-color: seagreen;
+    color: white;
+}
+
+.colorButton{
+    width: 50px;
+    height: 50px;
+}
