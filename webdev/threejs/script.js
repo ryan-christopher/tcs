@@ -22,9 +22,10 @@ function init(){
     const geometry = new THREE.BoxGeometry(2, 2, 2)
     //create texture after functions are done
 
-    //const texture = new THREE.TextureLoader().load('textures/crate.gif')
-    const material = new THREE.MeshBasicMaterial({color : 0x0000ff });
-    cube = new THREE.Mesh(geometry, material);
+    //
+    const texture = new THREE.TextureLoader().load('textures/crate.gif')
+    //const material = new THREE.MeshBasicMaterial({color : 0x0000ff });
+    cube = new THREE.Mesh(geometry, texture);
 
     //add into scene
     scene.add(cube);
